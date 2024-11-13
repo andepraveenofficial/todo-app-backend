@@ -1,0 +1,32 @@
+### Base URL Test
+GET http://localhost:5000
+
+###### Authentication ######
+
+### Register New User
+POST http://localhost:5000/api/v1/auth/signup
+Content-Type: application/json
+
+{
+    "name": "user",
+    "email": "user123@example.com",
+    "password": "password123"
+}
+
+
+### SignIn User
+POST http://localhost:5000/api/v1/auth/signin
+Content-Type: application/json
+
+{
+    "email": "user123@example.com",
+    "password": "password123"
+}
+
+
+### Signout User
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmYTA5NmMwZC1kZmM5LTQ0ZWUtYTc0Yy0xMzM0ODc1OTI0MWEiLCJpYXQiOjE3MzE0Nzc0MTAsImV4cCI6MTczMjA4MjIxMH0.4VJn57hVDnnIQu8Jq9yT-4KpdIdrADejgTSc8VcZtyo
+
+GET http://localhost:5000/api/v1/auth/signout
+Authorization: Bearer {{authToken}}
+
