@@ -47,5 +47,5 @@ export const deleteTask = async (
   if (!userId) {
     throw new Error('User ID is required to delete a task');
   }
-  await taskRepository.deleteTask(taskId, userId);
+  await taskRepository.deleteTask(taskId);
 };
