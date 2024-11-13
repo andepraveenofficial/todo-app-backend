@@ -25,8 +25,41 @@ Content-Type: application/json
 
 
 ### Signout User
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmYTA5NmMwZC1kZmM5LTQ0ZWUtYTc0Yy0xMzM0ODc1OTI0MWEiLCJpYXQiOjE3MzE0Nzc0MTAsImV4cCI6MTczMjA4MjIxMH0.4VJn57hVDnnIQu8Jq9yT-4KpdIdrADejgTSc8VcZtyo
-
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNjNkM2UyZS0yODQ0LTQzZTEtYjcxMC1jZWJlNTQ3ODJlMmMiLCJpYXQiOjE3MzE0OTExODksImV4cCI6MTczMjA5NTk4OX0.RKsCGfiF7izA9YhCAFjJPuNEOX4-VQtSQii6nmR5fHE
 GET http://localhost:5000/api/v1/auth/signout
 Authorization: Bearer {{authToken}}
 
+
+######### Tasks ##########
+
+### Get All tasks
+GET http://localhost:5000/api/v1/task
+Authorization: Bearer {{authToken}}
+
+
+### Create Task
+POST http://localhost:5000/api/v1/task
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "title": "Complete project",
+    "description": "Finish the project and submit it on time."
+}
+
+### Update Task
+@taskId = 0fb408e2-7419-4d5e-890f-73bc7a67b962
+PUT http://localhost:5000/api/v1/task/{{taskId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "title": "Updated Complete project",
+    "description": "Finish the project and submit it by next week.",
+    "status": "in progress"
+}
+
+
+### Delete Task
+DELETE http://localhost:5000/api/v1/task/{{taskId}}
+Authorization: Bearer {{authToken}}

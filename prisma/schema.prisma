@@ -22,4 +22,16 @@ model User {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
   deletedAt    DateTime? // optional field for soft deletes
+  tasks        Task[] // one-to-many relationship with Task model
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  status      String   @default("pending") // Default status for tasks
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String // Foreign key to User model
+  user        User     @relation(fields: [userId], references: [id])
 }

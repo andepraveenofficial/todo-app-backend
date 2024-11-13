@@ -1,25 +1,27 @@
+// main.seed.ts
 import { PrismaClient } from '@prisma/client';
 import { seedUsers } from './user.seed';
+import { seedTasks } from './task.seed';
 
 const prisma = new PrismaClient();
 
 const main = async () => {
   try {
-    await seedUsers();
+    console.log('Seeding started...');
+    await seedUsers(); // Seed users first
+    await seedTasks(); // Seed tasks after users
+    console.log('Users and Tasks seeded successfully');
   } catch (e) {
-    console.error(e);
-    process.exit(1);
+    console.error('Error during seeding:', e);
+    process.exit(1); // Exit with failure code
   } finally {
     console.log('Seeding completed!');
-    process.exit(0);
+    await prisma.$disconnect(); // Disconnect from the database
+    process.exit(0); // Exit with success code
   }
 };
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+main().catch((e) => {
+  console.error(e);
+  process.exit(1); // Exit with failure code
+});
