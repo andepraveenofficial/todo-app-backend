@@ -3,7 +3,7 @@ import path from 'path';
 
 /* -----> Third Party Packages <----- */
 import cors from 'cors';
-import corsOptions from './config/cors'; // cors options
+// import corsOptions from './config/cors'; // cors options
 import helmet from 'helmet';
 import limiter from './config/ratelimiter';
 
@@ -25,7 +25,7 @@ const app = express();
 
 /* -----> Third Party Middlewares <----- */
 app.use(cors()); // Testing
-app.use(cors(corsOptions)); // CORS origin
+//app.use(cors(corsOptions)); // CORS origin
 app.use(helmet()); // Use Helmet to secure the app with default settings
 app.use(limiter); // Use limiter to control to call the APIs
 app.use(cookieParser()); // For Authentication

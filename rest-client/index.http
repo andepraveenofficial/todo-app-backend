@@ -9,8 +9,8 @@ Content-Type: application/json
 
 {
     "name": "user",
-    "email": "user123@example.com",
-    "password": "password123"
+    "email": "user12345@example.com",
+    "password": "password12345"
 }
 
 
@@ -19,13 +19,14 @@ POST http://localhost:5000/api/v1/auth/signin
 Content-Type: application/json
 
 {
-    "email": "user123@example.com",
-    "password": "password123"
+    "email": "user12345@example.com",
+    "password": "password12345"
 }
 
 
 ### Signout User
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNjNkM2UyZS0yODQ0LTQzZTEtYjcxMC1jZWJlNTQ3ODJlMmMiLCJpYXQiOjE3MzE0OTExODksImV4cCI6MTczMjA5NTk4OX0.RKsCGfiF7izA9YhCAFjJPuNEOX4-VQtSQii6nmR5fHE
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxNjNkM2UyZS0yODQ0LTQzZTEtYjcxMC1jZWJlNTQ3ODJlMmMiLCJpYXQiOjE3MzE0OTY0NTIsImV4cCI6MTczMjEwMTI1Mn0.5mQRJlQ7eYoY1aAeEB1rW8rPmt_uG2fwXKSR7HCC0ow
+
 GET http://localhost:5000/api/v1/auth/signout
 Authorization: Bearer {{authToken}}
 
@@ -43,12 +44,12 @@ Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
-    "title": "Complete project",
+    "title": "New Task",
     "description": "Finish the project and submit it on time."
 }
 
 ### Update Task
-@taskId = 0fb408e2-7419-4d5e-890f-73bc7a67b962
+@taskId = 6fb36053-4005-4ce9-8522-409bdf268ab0
 PUT http://localhost:5000/api/v1/task/{{taskId}}
 Authorization: Bearer {{authToken}}
 Content-Type: application/json
