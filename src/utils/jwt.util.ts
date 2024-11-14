@@ -4,9 +4,9 @@ import jwt from 'jsonwebtoken';
 const generateRefreshToken = (data: any) => {
   const token = jwt.sign(
     data, // Payload
-    process.env.JWT_REFRESH_TOKEN_CODE as string, // Secret Key
+    (process.env.JWT_REFRESH_TOKEN_CODE as string) || 'myjwtrefreshtoken', // Secret Key
     {
-      expiresIn: process.env.JWT_REFRESH_TOKEN_EXPIRY as string, // Token will expire in 7 days
+      expiresIn: (process.env.JWT_REFRESH_TOKEN_EXPIRY as string) || '7d', // Token will expire in 7 days
     },
   );
   return token;

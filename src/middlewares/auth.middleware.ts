@@ -23,7 +23,8 @@ export const authMiddleware = asyncHandler(
     }
 
     // Verify JWT token
-    const secret = process.env.JWT_REFRESH_TOKEN_CODE as string; // Use the secret key from env
+    const secret =
+      (process.env.JWT_REFRESH_TOKEN_CODE as string) || 'myjwtrefreshtoken'; // Use the secret key from env
     const decoded = jwt.verify(token, secret) as JwtPayload;
 
     if (!decoded || !decoded.userId) {
